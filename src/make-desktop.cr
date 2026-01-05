@@ -23,20 +23,20 @@ module MakeDesktop
     mime_type : String | Nil = nil,
   )
     if mime_type.nil?
-      File.write "#{Path.home}/.local/share/applications/#{exe}.desktop",
+      File.write "#{Path["~/.local/share/applications"].expand(home: true)}/#{exe_name}.desktop",
         "[Desktop Entry]\n" \
         "Type=Application\n" \
         "Name=#{exe_name}\n" \
         "Path=#{exe_dir}\n" \
-        "Exec=./#{exe}"
+        "Exec=./#{exe}\n"
     else
-      File.write "#{Path.home}/.local/share/applications/#{exe}.desktop",
+      File.write "#{Path["~/.local/share/applications"].expand(home: true)}/#{exe_name}.desktop",
         "[Desktop Entry]\n" \
         "Type=Application\n" \
         "Name=#{exe_name}\n" \
         "Path=#{exe_dir}\n" \
         "Exec=./#{exe}\n" \
-        "MimeType=#{mime_type}"
+        "MimeType=#{mime_type}\n"
     end
   end
 end
