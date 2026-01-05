@@ -1,0 +1,16 @@
+name: make-desktop
+version: 0.1.0
+
+authors:
+  - ellie <ellsylv@proton.me>
+
+description: |
+  A small program to create a .desktop file so you don't have to
+
+targets:
+  make-desktop:
+    main: src/main.cr
+
+crystal: '>= 1.18.2'
+
+license: MIT
