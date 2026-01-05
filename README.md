@@ -23,11 +23,13 @@ usage is straightforward. from anywhere, call `make-desktop [flags]`
 valid flags are:
 
 ```
-exe PROG,      sets the executable name
+exe=PROG,      sets the executable
 
-dir DIR,       sets the directory where the executable is located
+name=NAME,     sets the program name
 
-mime MIME,     sets the mime type of the program (optional)
+dir=DIR,       sets the directory where the executable is located
+
+mime=MIME,     sets the mime type of the program (optional)
 
 -h, --help,    displays a help message
 
