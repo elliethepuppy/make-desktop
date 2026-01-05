@@ -9,10 +9,10 @@ mime_type : String | Nil = nil
 OptionParser.parse do |parser|
   parser.banner = "make-desktop is a program to create .desktop files" \
                   "usage: make-desktop [flags]"
-  parser.on("exe=PROG", "set the executable to PROG") { |prog| exe = prog }
-  parser.on("name=NAME", "set the program name") { |name| exe_name = name }
-  parser.on("dir=DIR", "set the executable's directory (NOT including the exe)") { |dir| exe_dir = dir }
-  parser.on("mime=MIME", "set the mime type to MIME") { |mime| mime_type = mime }
+  parser.on("-e PROG", "--exe=PROG", "set the executable to PROG") { |prog| exe = prog }
+  parser.on("-n NAME", "--name=NAME", "set the program name") { |name| exe_name = name }
+  parser.on("-d DIR", "--dir=DIR", "set the executable's directory (NOT including the exe)") { |dir| exe_dir = dir }
+  parser.on("-m MIME", "--mime=MIME", "set the mime type to MIME") { |mime| mime_type = mime }
   parser.on("-v", "--version", "display the version of the program") do
     puts MakeDesktop::VERSION
     exit 1
