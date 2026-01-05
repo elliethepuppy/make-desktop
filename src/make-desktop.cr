@@ -17,26 +17,25 @@ module MakeDesktop
   # Exec=./*exe*
   # MimeType=*mime_type* (only if not `nil` when called)
   def self.make_desktop(
-       exe : String,
-       exe_dir : Path | String,
-       mime_type : String | Nil = nil
-     )
+    exe : String,
+    exe_dir : Path | String,
+    mime_type : String | Nil = nil,
+  )
     if mime_type.nil?
-      File.write "#{Path.home}/.local/share/applications/#{exe}.desktop", \
-                 "[Desktop Entry]\n" \
-                 "Type=Application\n" \
-                 "Name=#{exe}\n" \
-                 "Path=#{exe_dir}\n" \
-                 "Exec=./#{exe}"
+      File.write "#{Path.home}/.local/share/applications/#{exe}.desktop",
+        "[Desktop Entry]\n" \
+        "Type=Application\n" \
+        "Name=#{exe}\n" \
+        "Path=#{exe_dir}\n" \
+        "Exec=./#{exe}"
     else
-      File.write "#{Path.home}/.local/share/applications/#{exe}.desktop", \
-                 "[Desktop Entry]\n" \
-                 "Type=Application\n" \
-                 "Name=#{exe}\n" \
-                 "Path=#{exe_dir}\n" \
-                 "Exec=./#{exe}\n" \
-                 "MimeType=#{mime_type}"
-
+      File.write "#{Path.home}/.local/share/applications/#{exe}.desktop",
+        "[Desktop Entry]\n" \
+        "Type=Application\n" \
+        "Name=#{exe}\n" \
+        "Path=#{exe_dir}\n" \
+        "Exec=./#{exe}\n" \
+        "MimeType=#{mime_type}"
     end
   end
 end
