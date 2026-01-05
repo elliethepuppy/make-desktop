@@ -7,17 +7,18 @@ module MakeDesktop
   VERSION = "0.1.0"
 
   # `make_desktop` takes an executable file, *exe : String*,
-  # the directory it's in, *exe_dir : Path | String*, and an
-  # optional *mime_type : String | Nil*, which defaults to `nil`,
-  # and then writes a .desktop file containing:
+  # the directory it's in, *exe_dir : Path | String*, its name
+  # *exe_name : String*, and an optional *mime_type : String | Nil*,
+  # which defaults to `nil`, and then writes a .desktop file containing:
   # [Desktop Entry]
   # Type=Application
-  # Name=*exe*
+  # Name=*exe_name*
   # Path=*exe_dir*
   # Exec=./*exe*
   # MimeType=*mime_type* (only if not `nil` when called)
   def self.make_desktop(
     exe : String,
+    exe_name : String,
     exe_dir : Path | String,
     mime_type : String | Nil = nil,
   )
@@ -25,14 +26,14 @@ module MakeDesktop
       File.write "#{Path.home}/.local/share/applications/#{exe}.desktop",
         "[Desktop Entry]\n" \
         "Type=Application\n" \
-        "Name=#{exe}\n" \
+        "Name=#{exe_name}\n" \
         "Path=#{exe_dir}\n" \
         "Exec=./#{exe}"
     else
       File.write "#{Path.home}/.local/share/applications/#{exe}.desktop",
         "[Desktop Entry]\n" \
         "Type=Application\n" \
-        "Name=#{exe}\n" \
+        "Name=#{exe_name}\n" \
         "Path=#{exe_dir}\n" \
         "Exec=./#{exe}\n" \
         "MimeType=#{mime_type}"
